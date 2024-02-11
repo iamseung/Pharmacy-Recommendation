@@ -1,0 +1,29 @@
+spring:
+  profiles:
+    active: local # default
+    # 여러 프로파일을 한번에 실행시킬 때 Group 사용
+    group:
+      local:
+        - common
+      prod:
+        - common
+---
+spring:
+  config:
+    activate:
+      on-profile: common
+
+# ...
+---
+
+spring:
+  config:
+    activate:
+      on-profile: local
+
+---
+# cloud 용
+spring:
+  config:
+    activate:
+      on-profile: prod
