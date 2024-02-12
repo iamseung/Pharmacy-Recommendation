@@ -8,13 +8,19 @@ spring:
       prod:
         - common
 ---
+
+# Common
 spring:
   config:
     activate:
       on-profile: common
 
-# ...
+kakao:
+  rest:
+    api:
+      key: ${KAKAO_REST_API_KEY}
 ---
+
 # Local 환경
 spring:
   config:
@@ -35,6 +41,7 @@ spring:
     database: mysql
 
 ---
+
 # cloud 환경
 spring:
   config:
