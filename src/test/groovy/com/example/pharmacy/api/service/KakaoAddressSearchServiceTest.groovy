@@ -18,12 +18,12 @@ class KakaoAddressSearchServiceTest extends Specification {
         given:
         String address = "서울 마포구";
         def charset =StandardCharsets.UTF_8;
+        
         when:
         def uri = kakaoUriBuilderService.buildUriByAddressSearch(address)
         def decodeResult = URLDecoder.decode(uri.toString(), charset)
 
         then:
         decodeResult == "https://dapi.kakao.com/v2/local/search/address.json?query=서울 마포구"
-//        println(uri);
     }
 }
