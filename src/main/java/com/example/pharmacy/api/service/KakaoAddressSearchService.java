@@ -3,6 +3,7 @@ package com.example.pharmacy.api.service;
 import com.example.pharmacy.api.dto.KakaoApiResponseDto;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -22,6 +23,7 @@ import java.net.URI;
 @Service
 @RequiredArgsConstructor
 public class KakaoAddressSearchService {
+
     // RestTemplateConfig 에서 의존성 주입
     private final RestTemplate restTemplate;
     private final KakaoUriBuilderService kakaoUriBuilderService;
@@ -36,7 +38,7 @@ public class KakaoAddressSearchService {
 
         // SET Header
         HttpHeaders headers = new HttpHeaders();
-        headers.set(HttpHeaders.AUTHORIZATION, "KakaAK " + kakaoUriBuilderService);
+        headers.set(HttpHeaders.AUTHORIZATION, "KakaoAK " + kakaoRestApiKey);
         HttpEntity httpEntity = new HttpEntity<>(headers);
 
         // kakao api 호출, Body 만 return
