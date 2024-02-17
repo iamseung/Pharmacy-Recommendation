@@ -21,5 +21,6 @@ services:
     # 호스트의 디렉토리를 참조해서 설정 초기화
     volumes:
       - ./database/config:/etc/mysql/conf.d
+      - ./database/init:/docker-entrypoint-initdb.d
     ports:
       - "3306:3306"
