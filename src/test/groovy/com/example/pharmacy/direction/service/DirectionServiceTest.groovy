@@ -2,7 +2,7 @@ package com.example.pharmacy.direction.service
 
 import com.example.pharmacy.api.dto.DocumentDto
 import com.example.pharmacy.pharmacy.dto.PharmacyDto
-import com.example.pharmacy.pharmacy.repository.PharmacySearchService
+import com.example.pharmacy.pharmacy.service.PharmacySearchService
 import spock.lang.Specification
 
 class DirectionServiceTest extends Specification {
