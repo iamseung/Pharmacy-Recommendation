@@ -1,4 +1,4 @@
-package com.example.pharmacy.pharmacy.repository;
+package com.example.pharmacy.pharmacy.service;
 
 import com.example.pharmacy.pharmacy.dto.PharmacyDto;
 import com.example.pharmacy.pharmacy.service.PharmacyRepositoryService;
