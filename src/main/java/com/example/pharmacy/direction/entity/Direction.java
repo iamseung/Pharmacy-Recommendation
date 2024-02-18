@@ -8,8 +8,8 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
-@Entity(name = "direction") // 클래스의 모든 필드를 매개변수로 받는 전체 생성자(Full Constructor)를 자동으로 생성
-@AllArgsConstructor // 매개변수가 없는 기본 생성자(Default Constructor)를 자동으로 생성
+@Entity(name = "direction")
+@AllArgsConstructor
 @NoArgsConstructor
 @Builder
 @Getter

@@ -5,7 +5,7 @@ import org.testcontainers.containers.GenericContainer
 import spock.lang.Specification
 
 /*
-싱글톤 컨테이너 추상 클래스
+싱글톤 컨테이너 추상 클래스, 통합테스트 환경
  */
 @SpringBootTest
 abstract class AbstractIntegrationContainerBaseTest extends Specification {
