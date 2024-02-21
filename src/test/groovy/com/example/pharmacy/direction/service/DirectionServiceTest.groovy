@@ -1,16 +1,20 @@
 package com.example.pharmacy.direction.service
 
 import com.example.pharmacy.api.dto.DocumentDto
+import com.example.pharmacy.direction.repository.DirectionRepository
 import com.example.pharmacy.pharmacy.dto.PharmacyDto
 import com.example.pharmacy.pharmacy.service.PharmacySearchService
+import org.testcontainers.shaded.org.apache.commons.lang3.ObjectUtils
 import spock.lang.Specification
 
 class DirectionServiceTest extends Specification {
     // @Mock
-    private PharmacySearchService pharmacySearchService = Mock();
+    private PharmacySearchService pharmacySearchService = Mock()
+    private DirectionRepository directionRepository = Mock()
 
     // @InjectMocks, 테스트 하려는 주체 & 주입 대상
-    private DirectionService directionService = new DirectionService(pharmacySearchService)
+    private DirectionService directionService = new DirectionService(
+            pharmacySearchService,directionRepository)
 
     private List<PharmacyDto> pharmacyList
 
