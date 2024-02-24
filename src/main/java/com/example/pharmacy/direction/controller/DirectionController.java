@@ -16,25 +16,13 @@ public class DirectionController {
 
     private final DirectionService directionService;
 
-    // 길안내 URL
-    private static final String DIRECTION_BASE_URL = "https://map.kakao.com/link/map/";
-
     @GetMapping("/dir/{encodedId}")
     public String searchDirection(@PathVariable("encodedId") String encodedId) {
         // encodedId 를 decode 해서 PK 값으로 엔티티 조회
-        Direction resultDirection = directionService.findById(encodedId);
+        String directionUrl = directionService.findDirectionUrlById(encodedId);
 
-        String params = String.join(",",
-                resultDirection.getTargetPharmacyName(),
-                String.valueOf(resultDirection.getTargetLatitude()),
-                String.valueOf(resultDirection.getTargetLongitude())
-        );
+        log.info("[DirectionController searchDirection] direction url: {}", directionUrl);
 
-        String result = UriComponentsBuilder.fromHttpUrl(DIRECTION_BASE_URL + params)
-                .toUriString();
-
-        log.info("direction params : {}, url: {}", params, result);
-
-        return "redirect:"+result;
+        return "redirect:"+directionUrl;
     }
 }
