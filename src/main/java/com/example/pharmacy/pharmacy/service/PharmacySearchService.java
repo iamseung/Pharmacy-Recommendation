@@ -1,11 +1,13 @@
 package com.example.pharmacy.pharmacy.service;
 
+import com.example.pharmacy.pharmacy.cache.PharmacyRedisTemplateService;
 import com.example.pharmacy.pharmacy.dto.PharmacyDto;
-import com.example.pharmacy.pharmacy.service.PharmacyRepositoryService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import org.springframework.util.CollectionUtils;
 
+import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -19,12 +21,19 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class PharmacySearchService {
     private final PharmacyRepositoryService pharmacyRepositoryService;
+    private final PharmacyRedisTemplateService pharmacyRedisTemplateService;
 
+    /*
+    ⭐️ Redis 에서 조회 시 에러가 발생하면 DB에서 조회하도록!
+     */
     public List<PharmacyDto> searchPharmacyDtoList() {
         // redis
+        List<PharmacyDto> pharmacyDtoList = pharmacyRedisTemplateService.findAll();
+        if(!CollectionUtils.isEmpty(pharmacyDtoList)) return pharmacyDtoList;
 
         // db
-        return pharmacyRepositoryService.findAll().stream()
+        return pharmacyRepositoryService.findAll()
+                .stream()
                 .map(PharmacyDto::from)
                 .collect(Collectors.toList());
     }
