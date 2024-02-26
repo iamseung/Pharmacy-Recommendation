@@ -66,4 +66,4 @@ spring:
 pharmacy:
   recommendation:
     base:
-      url: http://localhost/dir/
+      url: http://43.202.188.88/dir/ # aws ec2 고정(탄력) ip
